@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Two MCP servers — both bundled with the plugin. Zero network needed.",
+    "",
+    "1. jank-ai — the core Jank MCP server. Provides every mcp__jank-ai__*",
+    "   tool referenced in the skills (jank_session_start, jank_open_tabs,",
+    "   jank_parallel_eval, jank_spider_run, jank_explore_session_start,",
+    "   jank_progress_snapshot, jank_clean, etc.). Vendored at",
+    "   ./server/ with node_modules pre-installed — no npm fetch on first run.",
+    "",
+    "2. playwright — used by the headless browser path inside /jank.",
+    "   Defaults to the SHARED USER-DATA + dedicated 'Jank Test' profile",
+    "   recipe, which gives fast headless runs WITH your real Chrome's",
+    "   cookies/cache/extensions/SSO and zero window-hijack risk.",
+    "",
+    "ONE-TIME SETUP before /jank works (the live-browser command):",
+    "  1. Open Chrome → click avatar (top-right) → 'Add'",
+    "  2. Name the new profile EXACTLY 'Jank Test'",
+    "  3. Switch to it and log into staging / SSO / what you want tested",
+    "  4. Close that profile's window",
+    "",
+    "Slash commands that DON'T need this setup: /jank_light, /jank_cloud,",
+    "/jank_clean. Those work out of the box."
+  ],
+  "mcpServers": {
+    "jank-ai": {
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/server/index.js"
+      ]
+    },
+    "playwright": {
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/mcp/playwright-launch.mjs"
+      ],
+      "env": {
+        "JANK_USE_SHARED_USER_DATA": "1"
+      }
+    }
+  }
+}

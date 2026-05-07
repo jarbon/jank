@@ -1,0 +1,23 @@
+{
+  "name": "jank-plugin",
+  "version": "1.10.0",
+  "description": "Quality checks for AI coding agents — /jank full sweep, /jank_light static scan, /jank_test focused, /jank_explore 5 user agents, /jank_cloud hosted audit, /jank_clean reap zombies. Catches the bugs Claude/Cursor/Codex ship most often.",
+  "displayName": "Jank — AI Quality Checks",
+  "homepage": "https://jank.ai",
+  "repository": "https://github.com/jarbon/jank",
+  "license": "Proprietary",
+  "author": "testers.ai",
+  "keywords": [
+    "quality",
+    "code-review",
+    "static-analysis",
+    "accessibility",
+    "security",
+    "performance",
+    "playwright",
+    "testing",
+    "ai-quality"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
